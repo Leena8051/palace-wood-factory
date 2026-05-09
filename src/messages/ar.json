@@ -29,7 +29,10 @@
     "profile": "الملف الشخصي",
     "settings": "الإعدادات",
     "welcome": "مرحباً",
-    "currency": "ر.س"
+    "currency": "ر.س",
+    "results": "نتيجة",
+    "page": "صفحة",
+    "all": "الكل"
   },
   "auth": {
     "login": "تسجيل الدخول",
@@ -76,6 +79,100 @@
     "topProducts": "المنتجات الأكثر طلباً",
     "noOrders": "لا توجد طلبات نشطة",
     "noAlerts": "لا توجد تنبيهات"
+  },
+  "customers": {
+    "title": "العملاء",
+    "listSubtitle": "إدارة قاعدة بيانات العملاء والتواصل معهم",
+    "addNew": "إضافة عميل",
+    "addNewSubtitle": "املأ بيانات العميل الجديد",
+    "editTitle": "تعديل بيانات العميل",
+    "search": "بحث",
+    "view": "عرض",
+    "edit": "تعديل",
+    "exportCsv": "تصدير CSV",
+    "openWhatsapp": "فتح واتساب",
+    "confirmDelete": "هل أنت متأكد من حذف العميل",
+    "deleted": "تم حذف العميل",
+    "createdSuccess": "تم إنشاء العميل بنجاح",
+    "updatedSuccess": "تم تحديث بيانات العميل",
+    "emptyTitle": "لا يوجد عملاء بعد",
+    "emptyDescription": "ابدأ بإضافة أول عميل في قاعدة البيانات",
+    "table": {
+      "code": "الكود",
+      "name": "الاسم",
+      "phone": "الجوال",
+      "city": "المدينة",
+      "orders": "الطلبات",
+      "lastOrder": "آخر طلب",
+      "source": "المصدر",
+      "actions": "إجراءات"
+    },
+    "type": {
+      "INDIVIDUAL": "فرد",
+      "COMPANY": "شركة"
+    },
+    "sources": {
+      "INSTAGRAM": "إنستقرام",
+      "WHATSAPP": "واتساب",
+      "REFERRAL": "إحالة",
+      "WALK_IN": "زيارة مباشرة",
+      "GOOGLE": "جوجل",
+      "OTHER": "أخرى"
+    },
+    "filters": {
+      "searchPlaceholder": "ابحث بالاسم أو رقم الجوال أو الكود...",
+      "allCities": "كل المدن",
+      "allTypes": "كل الأنواع",
+      "allSources": "كل المصادر",
+      "clear": "مسح"
+    },
+    "fields": {
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "أدخل الاسم الرباعي",
+      "phone": "رقم الجوال",
+      "whatsapp": "رقم الواتساب",
+      "whatsappPlaceholder": "اتركه فارغاً إذا نفس رقم الجوال",
+      "email": "البريد الإلكتروني",
+      "city": "المدينة",
+      "district": "الحي",
+      "address": "العنوان التفصيلي",
+      "customerType": "نوع العميل",
+      "companyName": "اسم الشركة",
+      "source": "كيف عرف عنا؟",
+      "isVip": "عميل VIP",
+      "isVipHint": "يحصل على أولوية أعلى وعروض خاصة",
+      "notesPlaceholder": "ملاحظات داخلية لا يراها العميل (تفضيلات، تاريخ، إلخ)",
+      "joinedAt": "تاريخ الانضمام"
+    },
+    "sections": {
+      "basic": "البيانات الأساسية",
+      "contact": "التواصل",
+      "address": "العنوان",
+      "notes": "ملاحظات داخلية"
+    },
+    "tabs": {
+      "orders": "الطلبات",
+      "complaints": "الشكاوى",
+      "maintenance": "الصيانة",
+      "notes": "الملاحظات",
+      "noOrders": "لا توجد طلبات لهذا العميل",
+      "noComplaints": "لا توجد شكاوى",
+      "noMaintenance": "لا توجد طلبات صيانة",
+      "noNotes": "لا توجد ملاحظات",
+      "view": "عرض"
+    }
+  },
+  "orders": {
+    "statuses": {
+      "NEW": "جديد",
+      "DESIGN": "تصميم",
+      "APPROVED": "موافَق عليه",
+      "PRODUCTION": "تصنيع",
+      "FINISHING": "تشطيب",
+      "READY": "جاهز",
+      "DELIVERED": "تم التسليم",
+      "CANCELLED": "ملغي"
+    }
   },
   "roles": {
     "ADMIN": "المدير العام",

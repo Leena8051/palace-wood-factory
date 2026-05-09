@@ -29,7 +29,10 @@
     "profile": "Profile",
     "settings": "Settings",
     "welcome": "Welcome",
-    "currency": "SAR"
+    "currency": "SAR",
+    "results": "results",
+    "page": "Page",
+    "all": "All"
   },
   "auth": {
     "login": "Login",
@@ -76,6 +79,100 @@
     "topProducts": "Top Products",
     "noOrders": "No active orders",
     "noAlerts": "No alerts"
+  },
+  "customers": {
+    "title": "Customers",
+    "listSubtitle": "Manage your customer database and communications",
+    "addNew": "Add Customer",
+    "addNewSubtitle": "Fill in the new customer details",
+    "editTitle": "Edit Customer",
+    "search": "Search",
+    "view": "View",
+    "edit": "Edit",
+    "exportCsv": "Export CSV",
+    "openWhatsapp": "Open WhatsApp",
+    "confirmDelete": "Are you sure you want to delete customer",
+    "deleted": "Customer deleted",
+    "createdSuccess": "Customer created successfully",
+    "updatedSuccess": "Customer updated",
+    "emptyTitle": "No customers yet",
+    "emptyDescription": "Start by adding your first customer to the database",
+    "table": {
+      "code": "Code",
+      "name": "Name",
+      "phone": "Phone",
+      "city": "City",
+      "orders": "Orders",
+      "lastOrder": "Last order",
+      "source": "Source",
+      "actions": "Actions"
+    },
+    "type": {
+      "INDIVIDUAL": "Individual",
+      "COMPANY": "Company"
+    },
+    "sources": {
+      "INSTAGRAM": "Instagram",
+      "WHATSAPP": "WhatsApp",
+      "REFERRAL": "Referral",
+      "WALK_IN": "Walk-in",
+      "GOOGLE": "Google",
+      "OTHER": "Other"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by name, phone or code...",
+      "allCities": "All cities",
+      "allTypes": "All types",
+      "allSources": "All sources",
+      "clear": "Clear"
+    },
+    "fields": {
+      "fullName": "Full name",
+      "fullNamePlaceholder": "Enter full name",
+      "phone": "Phone number",
+      "whatsapp": "WhatsApp number",
+      "whatsappPlaceholder": "Leave empty if same as phone",
+      "email": "Email",
+      "city": "City",
+      "district": "District",
+      "address": "Detailed address",
+      "customerType": "Customer type",
+      "companyName": "Company name",
+      "source": "How did they find us?",
+      "isVip": "VIP customer",
+      "isVipHint": "Receives higher priority and special offers",
+      "notesPlaceholder": "Internal notes (preferences, history, etc.)",
+      "joinedAt": "Joined"
+    },
+    "sections": {
+      "basic": "Basic information",
+      "contact": "Contact",
+      "address": "Address",
+      "notes": "Internal notes"
+    },
+    "tabs": {
+      "orders": "Orders",
+      "complaints": "Complaints",
+      "maintenance": "Maintenance",
+      "notes": "Notes",
+      "noOrders": "No orders for this customer",
+      "noComplaints": "No complaints",
+      "noMaintenance": "No maintenance requests",
+      "noNotes": "No notes",
+      "view": "View"
+    }
+  },
+  "orders": {
+    "statuses": {
+      "NEW": "New",
+      "DESIGN": "Design",
+      "APPROVED": "Approved",
+      "PRODUCTION": "Production",
+      "FINISHING": "Finishing",
+      "READY": "Ready",
+      "DELIVERED": "Delivered",
+      "CANCELLED": "Cancelled"
+    }
   },
   "roles": {
     "ADMIN": "Administrator",
