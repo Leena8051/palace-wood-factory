@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "مصنع أخشاب القصور",
+    "tagline": "للأعمال الخشبية الفاخرة",
+    "shortName": "أخشاب القصور"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "view": "عرض",
+    "search": "بحث",
+    "filter": "تصفية",
+    "actions": "إجراءات",
+    "yes": "نعم",
+    "no": "لا",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "submit": "إرسال",
+    "close": "إغلاق",
+    "create": "إضافة",
+    "update": "تحديث",
+    "language": "اللغة",
+    "theme": "المظهر",
+    "logout": "تسجيل الخروج",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "welcome": "مرحباً",
+    "currency": "ر.س"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "loginTitle": "تسجيل الدخول إلى النظام",
+    "loginSubtitle": "أدخل بيانات حسابك للمتابعة",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "you@example.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "rememberMe": "تذكرني",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "loginButton": "دخول",
+    "loggingIn": "جاري الدخول...",
+    "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "loginError": "حدث خطأ أثناء تسجيل الدخول"
+  },
+  "navigation": {
+    "dashboard": "لوحة التحكم",
+    "customers": "العملاء",
+    "orders": "الطلبات",
+    "products": "المنتجات",
+    "complaints": "الشكاوى",
+    "maintenance": "الصيانة",
+    "inventory": "المخزون",
+    "payments": "المدفوعات",
+    "reports": "التقارير",
+    "settings": "الإعدادات",
+    "users": "المستخدمون"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcomeMorning": "صباح الخير",
+    "welcomeAfternoon": "مساء الخير",
+    "welcomeEvening": "مساء الخير",
+    "stats": {
+      "activeOrders": "الطلبات النشطة",
+      "monthlyRevenue": "إيرادات الشهر",
+      "newCustomers": "عملاء جدد",
+      "satisfaction": "رضا العملاء"
+    },
+    "recentOrders": "آخر الطلبات",
+    "alerts": "التنبيهات",
+    "weeklyOrders": "طلبات الأسبوع",
+    "topProducts": "المنتجات الأكثر طلباً",
+    "noOrders": "لا توجد طلبات نشطة",
+    "noAlerts": "لا توجد تنبيهات"
+  },
+  "roles": {
+    "ADMIN": "المدير العام",
+    "OPERATIONS_MANAGER": "مدير العمليات",
+    "CUSTOMER_SERVICE": "خدمة العملاء",
+    "DESIGNER": "مهندس التصميم",
+    "PRODUCTION_SUPERVISOR": "مشرف الإنتاج",
+    "WAREHOUSE_KEEPER": "أمين المستودع",
+    "TECHNICIAN": "فني"
+  }
+}

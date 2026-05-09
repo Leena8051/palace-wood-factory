@@ -1,0 +1,539 @@
+// Palace Wood Factory — Database Schema
+// SQLite-adapted: enums modeled as String (validated via Zod); Decimal -> Float.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ============================================================
+// AUTH & USERS
+// ============================================================
+
+model User {
+  id               String    @id @default(cuid())
+  name             String
+  email            String    @unique
+  emailVerified    DateTime?
+  image            String?
+  passwordHash     String?
+  role             String    @default("CUSTOMER_SERVICE")
+  // Roles: ADMIN | OPERATIONS_MANAGER | CUSTOMER_SERVICE | DESIGNER | PRODUCTION_SUPERVISOR | WAREHOUSE_KEEPER | TECHNICIAN
+  phone            String?
+  isActive         Boolean   @default(true)
+  twoFactorEnabled Boolean   @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  accounts  Account[]
+  sessions  Session[]
+  auditLogs AuditLog[]
+
+  ordersCreated       Order[]              @relation("OrderCreatedBy")
+  ordersAsDesigner    Order[]              @relation("OrderDesigner")
+  ordersAsSupervisor  Order[]              @relation("OrderSupervisor")
+  complaintsAssigned  Complaint[]          @relation("ComplaintAssignee")
+  complaintsResolved  Complaint[]          @relation("ComplaintResolver")
+  complaintResponses  ComplaintResponse[]
+  maintenanceAssigned MaintenanceRequest[] @relation("MaintenanceTechnician")
+  paymentsReceived    Payment[]
+  stockMovements      StockMovement[]
+  notifications       Notification[]
+
+  @@index([role])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================================
+// CUSTOMERS
+// ============================================================
+
+model Customer {
+  id           String  @id @default(cuid())
+  customerCode String  @unique
+  fullName     String
+  phone        String  @unique
+  whatsapp     String?
+  email        String?
+  city         String
+  district     String?
+  address      String?
+  customerType String  @default("INDIVIDUAL") // INDIVIDUAL | COMPANY
+  companyName  String?
+  notes        String?
+  source       String  @default("WALK_IN") // INSTAGRAM | WHATSAPP | REFERRAL | WALK_IN | GOOGLE | OTHER
+  rating       Int?
+  isVip        Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders      Order[]
+  complaints  Complaint[]
+  maintenance MaintenanceRequest[]
+
+  @@index([phone])
+  @@index([customerCode])
+  @@index([city])
+}
+
+// ============================================================
+// PRODUCTS (CATALOG)
+// ============================================================
+
+model Product {
+  id          String  @id @default(cuid())
+  sku         String  @unique
+  nameAr      String
+  nameEn      String
+  category    String // DOORS | FURNITURE | INTERIOR_DECOR
+  subCategory String?
+  description String?
+  basePrice   Float
+  isActive    Boolean @default(true)
+  isFeatured  Boolean @default(false)
+
+  defaultWidth    Float?
+  defaultHeight   Float?
+  defaultDepth    Float?
+  defaultMaterial String?
+
+  images ProductImage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@index([sku])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String?
+  sortOrder Int     @default(0)
+}
+
+// ============================================================
+// ORDERS
+// ============================================================
+
+model Order {
+  id          String @id @default(cuid())
+  orderNumber String @unique
+
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+
+  productCategory String // DOORS | FURNITURE | INTERIOR_DECOR
+  productType     String
+  description     String
+
+  width      Float?
+  height     Float?
+  depth      Float?
+  woodType   String?
+  color      String?
+  finishType String?
+
+  status       String @default("NEW")
+  // NEW | DESIGN | APPROVED | PRODUCTION | FINISHING | READY | DELIVERED | CANCELLED
+  currentStage Int    @default(1)
+  priority     String @default("NORMAL") // LOW | NORMAL | HIGH | URGENT
+
+  estimatedPrice Float
+  finalPrice     Float?
+  deposit        Float?
+  paidAmount     Float  @default(0)
+
+  orderDate         DateTime  @default(now())
+  estimatedDelivery DateTime?
+  actualDelivery    DateTime?
+
+  assignedDesignerId   String?
+  assignedDesigner     User?   @relation("OrderDesigner", fields: [assignedDesignerId], references: [id])
+  assignedSupervisorId String?
+  assignedSupervisor   User?   @relation("OrderSupervisor", fields: [assignedSupervisorId], references: [id])
+  createdById          String
+  createdBy            User    @relation("OrderCreatedBy", fields: [createdById], references: [id])
+
+  notes String?
+
+  files       OrderFile[]
+  stages      OrderStage[]
+  payments    Payment[]
+  complaints  Complaint[]
+  maintenance MaintenanceRequest[]
+  materials   OrderMaterial[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderNumber])
+  @@index([customerId])
+  @@index([status])
+  @@index([priority])
+}
+
+model OrderFile {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  url        String
+  fileType   String // DESIGN | PRODUCTION_PHOTO | INVOICE | OTHER
+  fileName   String
+  fileSize   Int
+  mimeType   String
+  uploadedBy String
+  createdAt  DateTime @default(now())
+}
+
+model OrderStage {
+  id          String    @id @default(cuid())
+  orderId     String
+  order       Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  stageNumber Int
+  stageName   String // DESIGN | CUTTING | ASSEMBLY | FINISHING | DELIVERY
+  status      String    @default("PENDING") // PENDING | IN_PROGRESS | COMPLETED | BLOCKED
+  startedAt   DateTime?
+  completedAt DateTime?
+  durationMin Int?
+  notes       String?
+  updatedById String?
+
+  @@unique([orderId, stageNumber])
+  @@index([orderId])
+}
+
+// ============================================================
+// COMPLAINTS
+// ============================================================
+
+model Complaint {
+  id           String @id @default(cuid())
+  ticketNumber String @unique
+
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+  orderId    String?
+  order      Order?   @relation(fields: [orderId], references: [id])
+
+  category String // QUALITY | DELAY | DAMAGE | WRONG_SPEC | OTHER
+  priority String @default("NORMAL")
+  status   String @default("OPEN") // OPEN | IN_PROGRESS | RESOLVED | CLOSED
+
+  title       String
+  description String
+
+  assignedToId String?
+  assignedTo   User?   @relation("ComplaintAssignee", fields: [assignedToId], references: [id])
+  resolvedById String?
+  resolvedBy   User?   @relation("ComplaintResolver", fields: [resolvedById], references: [id])
+  resolution   String?
+
+  customerSatisfied Boolean?
+  rating            Int?
+
+  attachments ComplaintAttachment[]
+  responses   ComplaintResponse[]
+
+  createdAt  DateTime  @default(now())
+  resolvedAt DateTime?
+  closedAt   DateTime?
+
+  @@index([ticketNumber])
+  @@index([status])
+  @@index([customerId])
+}
+
+model ComplaintAttachment {
+  id          String    @id @default(cuid())
+  complaintId String
+  complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  url         String
+  fileName    String
+  mimeType    String
+  createdAt   DateTime  @default(now())
+}
+
+model ComplaintResponse {
+  id          String    @id @default(cuid())
+  complaintId String
+  complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id])
+  message     String
+  isInternal  Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+}
+
+// ============================================================
+// MAINTENANCE
+// ============================================================
+
+model MaintenanceRequest {
+  id            String @id @default(cuid())
+  requestNumber String @unique
+
+  customerId      String
+  customer        Customer @relation(fields: [customerId], references: [id])
+  originalOrderId String?
+  originalOrder   Order?   @relation(fields: [originalOrderId], references: [id])
+
+  type          String // WARRANTY | PAID | FREE_GOODWILL
+  description   String
+  reportedIssue String
+
+  scheduledDate DateTime?
+  completedDate DateTime?
+
+  technicianId String?
+  technician   User?   @relation("MaintenanceTechnician", fields: [technicianId], references: [id])
+
+  estimatedCost Float?
+  finalCost     Float?
+
+  status            String  @default("REQUESTED")
+  // REQUESTED | SCHEDULED | IN_PROGRESS | COMPLETED | CANCELLED
+  customerSignature String?
+  notes             String?
+
+  photos MaintenancePhoto[]
+
+  createdAt DateTime @default(now())
+
+  @@index([requestNumber])
+  @@index([status])
+  @@index([customerId])
+}
+
+model MaintenancePhoto {
+  id                   String             @id @default(cuid())
+  maintenanceRequestId String
+  maintenanceRequest   MaintenanceRequest @relation(fields: [maintenanceRequestId], references: [id], onDelete: Cascade)
+  url                  String
+  type                 String // BEFORE | AFTER
+  caption              String?
+  createdAt            DateTime           @default(now())
+}
+
+// ============================================================
+// INVENTORY
+// ============================================================
+
+model Material {
+  id           String    @id @default(cuid())
+  sku          String    @unique
+  nameAr       String
+  nameEn       String
+  category     String // WOOD | PAINT | HARDWARE | ACCESSORIES
+  unit         String
+  currentStock Float     @default(0)
+  minStock     Float     @default(0)
+  unitPrice    Float
+  supplierId   String?
+  supplier     Supplier? @relation(fields: [supplierId], references: [id])
+  isActive     Boolean   @default(true)
+
+  movements          StockMovement[]
+  orderMaterials     OrderMaterial[]
+  purchaseOrderItems PurchaseOrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
+
+model StockMovement {
+  id            String   @id @default(cuid())
+  materialId    String
+  material      Material @relation(fields: [materialId], references: [id])
+  type          String // IN | OUT | ADJUSTMENT
+  quantity      Float
+  reason        String
+  orderId       String?
+  performedById String
+  performedBy   User     @relation(fields: [performedById], references: [id])
+  notes         String?
+  createdAt     DateTime @default(now())
+
+  @@index([materialId])
+}
+
+model OrderMaterial {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  materialId String
+  material   Material @relation(fields: [materialId], references: [id])
+  quantity   Float
+  unitCost   Float
+  totalCost  Float
+  createdAt  DateTime @default(now())
+
+  @@unique([orderId, materialId])
+}
+
+model Supplier {
+  id       String  @id @default(cuid())
+  name     String
+  phone    String
+  email    String?
+  address  String?
+  notes    String?
+  rating   Int?
+  isActive Boolean @default(true)
+
+  materials      Material[]
+  purchaseOrders PurchaseOrder[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PurchaseOrder {
+  id           String    @id @default(cuid())
+  poNumber     String    @unique
+  supplierId   String
+  supplier     Supplier  @relation(fields: [supplierId], references: [id])
+  status       String    @default("DRAFT") // DRAFT | SENT | RECEIVED | CANCELLED
+  totalAmount  Float     @default(0)
+  notes        String?
+  expectedDate DateTime?
+  receivedDate DateTime?
+
+  items PurchaseOrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PurchaseOrderItem {
+  id              String        @id @default(cuid())
+  purchaseOrderId String
+  purchaseOrder   PurchaseOrder @relation(fields: [purchaseOrderId], references: [id], onDelete: Cascade)
+  materialId      String
+  material        Material      @relation(fields: [materialId], references: [id])
+  quantity        Float
+  unitPrice       Float
+  totalPrice      Float
+}
+
+// ============================================================
+// PAYMENTS
+// ============================================================
+
+model Payment {
+  id            String @id @default(cuid())
+  paymentNumber String @unique
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id])
+
+  amount Float
+  type   String // DEPOSIT | INSTALLMENT | FINAL
+  method String // CASH | BANK_TRANSFER | CARD | CHECK
+
+  receivedById String
+  receivedBy   User    @relation(fields: [receivedById], references: [id])
+  receiptUrl   String?
+  notes        String?
+
+  paidAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([paymentNumber])
+}
+
+// ============================================================
+// NOTIFICATIONS
+// ============================================================
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String
+  title     String
+  message   String
+  link      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, isRead])
+}
+
+// ============================================================
+// AUDIT LOG
+// ============================================================
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  action    String
+  entity    String
+  entityId  String?
+  changes   String?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([entity, entityId])
+}
+
+// ============================================================
+// SETTINGS
+// ============================================================
+
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  category  String   @default("general")
+  updatedAt DateTime @updatedAt
+}

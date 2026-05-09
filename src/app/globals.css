@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   Palace Wood Factory — Wood Theme
+   Light + Dark mode design tokens
+   ============================================================ */
+
+:root {
+  --background: #faf3e7;
+  --foreground: #2c1810;
+  --card: #ffffff;
+  --card-foreground: #2c1810;
+  --popover: #ffffff;
+  --popover-foreground: #2c1810;
+  --primary: #2c1810;
+  --primary-foreground: #faf3e7;
+  --secondary: #f1e3c7;
+  --secondary-foreground: #2c1810;
+  --muted: #f1e3c7;
+  --muted-foreground: #6b3e2a;
+  --accent: #b8860b;
+  --accent-foreground: #ffffff;
+  --destructive: #a83232;
+  --destructive-foreground: #ffffff;
+  --success: #5a7c3a;
+  --success-foreground: #ffffff;
+  --warning: #c47d2c;
+  --warning-foreground: #ffffff;
+  --info: #4a6b8a;
+  --info-foreground: #ffffff;
+  --border: #e2c89a;
+  --input: #e2c89a;
+  --ring: #b8860b;
+  --radius: 0.75rem;
+
+  --wood-50: #faf3e7;
+  --wood-100: #f1e3c7;
+  --wood-200: #e2c89a;
+  --wood-300: #c9a66b;
+  --wood-400: #b8860b;
+  --wood-500: #8a6308;
+  --wood-600: #6b3e2a;
+  --wood-700: #4a2c1a;
+  --wood-800: #2c1810;
+  --wood-900: #1a0e07;
+}
+
+.dark {
+  --background: #1a0e07;
+  --foreground: #faf3e7;
+  --card: #2c1810;
+  --card-foreground: #faf3e7;
+  --popover: #2c1810;
+  --popover-foreground: #faf3e7;
+  --primary: #d4a017;
+  --primary-foreground: #1a0e07;
+  --secondary: #4a2c1a;
+  --secondary-foreground: #faf3e7;
+  --muted: #4a2c1a;
+  --muted-foreground: #c9a66b;
+  --accent: #d4a017;
+  --accent-foreground: #1a0e07;
+  --destructive: #c44343;
+  --destructive-foreground: #ffffff;
+  --success: #7a9c5a;
+  --success-foreground: #ffffff;
+  --warning: #e09d4c;
+  --warning-foreground: #1a0e07;
+  --info: #6a8baa;
+  --info-foreground: #ffffff;
+  --border: #4a2c1a;
+  --input: #4a2c1a;
+  --ring: #d4a017;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-wood-50: var(--wood-50);
+  --color-wood-100: var(--wood-100);
+  --color-wood-200: var(--wood-200);
+  --color-wood-300: var(--wood-300);
+  --color-wood-400: var(--wood-400);
+  --color-wood-500: var(--wood-500);
+  --color-wood-600: var(--wood-600);
+  --color-wood-700: var(--wood-700);
+  --color-wood-800: var(--wood-800);
+  --color-wood-900: var(--wood-900);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-sans: var(--font-cairo), var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-playfair), var(--font-cairo), serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+* { border-color: var(--border); }
+
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+html[dir="rtl"] body { font-family: var(--font-cairo), system-ui, sans-serif; }
+html[dir="ltr"] body { font-family: var(--font-inter), system-ui, sans-serif; }
+
+.wood-grain {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 2px,
+    rgba(184, 134, 11, 0.04) 2px,
+    rgba(184, 134, 11, 0.04) 4px
+  );
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--muted); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
