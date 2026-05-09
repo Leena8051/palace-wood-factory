@@ -190,6 +190,9 @@
     "paid": "مدفوع",
     "balance": "المتبقي",
     "filesPhase4Hint": "رفع التصاميم وصور الإنتاج — قريباً في المرحلة 4",
+    "printInvoice": "طباعة الفاتورة",
+    "publicTracking": "صفحة تتبع العميل",
+    "publicTrackingHint": "العميل يستطيع متابعة طلبه عبر هذا الرابط أو مسح الكود",
     "table": {
       "orderNumber": "رقم الطلب",
       "customer": "العميل",
@@ -248,6 +251,89 @@
       "noResults": "لا يوجد عميل بهذا الاسم",
       "createNew": "إضافة عميل جديد"
     },
+    "stageActions": {
+      "start": "بدء {stage}",
+      "complete": "اكتمال {stage}",
+      "block": "إيقاف",
+      "started": "بدأت مرحلة {stage}",
+      "completed": "اكتملت مرحلة {stage}",
+      "blocked": "تم إيقاف المرحلة",
+      "blockReasonRequired": "سبب الإيقاف مطلوب",
+      "blockTitle": "إيقاف مرحلة {stage}",
+      "blockReason": "سبب الإيقاف",
+      "blockReasonPlaceholder": "اكتب سبب إيقاف العمل في هذه المرحلة...",
+      "confirmComplete": "تأكيد الإكمال",
+      "confirmBlock": "تأكيد الإيقاف",
+      "notesOptional": "ملاحظات (اختياري)",
+      "cancel": "إلغاء",
+      "markDelivered": "تأكيد التسليم النهائي للعميل",
+      "delivered": "تم تأكيد التسليم",
+      "alreadyDelivered": "تم تسليم الطلب",
+      "cancelledHint": "هذا الطلب ملغي — لا يمكن تعديل المراحل",
+      "nextStageHint": "اضغط على بداية المرحلة التالية في الأعلى عند الجاهزية"
+    },
+    "payments": {
+      "title": "الدفعات",
+      "noPayments": "لا توجد دفعات بعد",
+      "recordNew": "تسجيل دفعة",
+      "record": "تسجيل",
+      "recorded": "تم تسجيل الدفعة {number}",
+      "remainingBalance": "المتبقي",
+      "amount": "المبلغ (ر.س)",
+      "type": "النوع",
+      "method": "طريقة الدفع",
+      "notes": "ملاحظات",
+      "notesPlaceholder": "تفاصيل إضافية (اختياري)",
+      "types": {
+        "DEPOSIT": "عربون",
+        "INSTALLMENT": "دفعة",
+        "FINAL": "دفعة نهائية"
+      },
+      "methods": {
+        "CASH": "نقداً",
+        "BANK_TRANSFER": "حوالة بنكية",
+        "CARD": "بطاقة",
+        "CHECK": "شيك"
+      }
+    },
+    "files": {
+      "title": "الملفات",
+      "dropHere": "اسحب الملفات هنا أو اضغط لاختيارها",
+      "formats": "صور (JPG/PNG/WEBP) أو PDF — حد أقصى 5MB",
+      "browse": "اختيار ملفات",
+      "uploaded": "تم رفع {count} ملف",
+      "deleted": "تم حذف الملف",
+      "delete": "حذف",
+      "designLabel": "تصميم",
+      "confirmDelete": "هل أنت متأكد من حذف \"{name}\"؟"
+    },
+    "invoice": {
+      "invoice": "فاتورة",
+      "invoiceNumber": "رقم الفاتورة",
+      "issueDate": "تاريخ الإصدار",
+      "billTo": "العميل",
+      "orderInfo": "معلومات الطلب",
+      "orderDate": "تاريخ الطلب",
+      "estimatedDelivery": "موعد التسليم",
+      "category": "الفئة",
+      "priority": "الأولوية",
+      "description": "الوصف",
+      "specs": "المواصفات",
+      "price": "السعر",
+      "dimensions": "الأبعاد",
+      "woodType": "الخشب",
+      "color": "اللون",
+      "finishType": "التشطيب",
+      "subtotal": "المجموع",
+      "deposit": "العربون",
+      "paid": "مدفوع",
+      "balanceDue": "المستحق",
+      "trackingTitle": "تتبع الطلب",
+      "trackingHint": "امسح الكود أو زر الرابط لمتابعة حالة الطلب لحظة بلحظة.",
+      "thankYou": "شكراً لاختياركم خدماتنا",
+      "print": "طباعة",
+      "close": "إغلاق"
+    },
     "wizard": {
       "createdSuccess": "تم إنشاء الطلب {number} بنجاح",
       "createOrder": "إنشاء الطلب",
@@ -295,6 +381,16 @@
         "notesPlaceholder": "أي ملاحظات للفريق فقط، لا تظهر للعميل"
       }
     }
+  },
+  "track": {
+    "orderNumber": "رقم الطلب",
+    "customer": "العميل",
+    "phone": "الجوال",
+    "orderDate": "تاريخ الطلب",
+    "estimatedDelivery": "موعد التسليم المتوقع",
+    "progress": "نسبة الإنجاز",
+    "manufacturingStages": "مراحل التصنيع",
+    "contactHint": "لأي استفسار يرجى التواصل معنا"
   },
   "roles": {
     "ADMIN": "المدير العام",

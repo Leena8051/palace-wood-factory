@@ -190,6 +190,9 @@
     "paid": "Paid",
     "balance": "Balance Due",
     "filesPhase4Hint": "File uploads (designs + production photos) — coming in Phase 4",
+    "printInvoice": "Print Invoice",
+    "publicTracking": "Public tracking page",
+    "publicTrackingHint": "Customer can follow this order via this link or by scanning the QR code",
     "table": {
       "orderNumber": "Order #",
       "customer": "Customer",
@@ -248,6 +251,89 @@
       "noResults": "No customer found",
       "createNew": "Add new customer"
     },
+    "stageActions": {
+      "start": "Start {stage}",
+      "complete": "Complete {stage}",
+      "block": "Block",
+      "started": "Started stage {stage}",
+      "completed": "Completed stage {stage}",
+      "blocked": "Stage blocked",
+      "blockReasonRequired": "Reason is required",
+      "blockTitle": "Block {stage}",
+      "blockReason": "Reason",
+      "blockReasonPlaceholder": "Why is this stage being blocked?",
+      "confirmComplete": "Confirm",
+      "confirmBlock": "Confirm block",
+      "notesOptional": "Notes (optional)",
+      "cancel": "Cancel",
+      "markDelivered": "Confirm final delivery to customer",
+      "delivered": "Delivery confirmed",
+      "alreadyDelivered": "Order has been delivered",
+      "cancelledHint": "This order is cancelled — stages cannot be modified",
+      "nextStageHint": "Click the next stage's start button when ready"
+    },
+    "payments": {
+      "title": "Payments",
+      "noPayments": "No payments yet",
+      "recordNew": "Record payment",
+      "record": "Record",
+      "recorded": "Payment {number} recorded",
+      "remainingBalance": "Balance due",
+      "amount": "Amount (SAR)",
+      "type": "Type",
+      "method": "Method",
+      "notes": "Notes",
+      "notesPlaceholder": "Optional details",
+      "types": {
+        "DEPOSIT": "Deposit",
+        "INSTALLMENT": "Installment",
+        "FINAL": "Final"
+      },
+      "methods": {
+        "CASH": "Cash",
+        "BANK_TRANSFER": "Bank transfer",
+        "CARD": "Card",
+        "CHECK": "Check"
+      }
+    },
+    "files": {
+      "title": "Files",
+      "dropHere": "Drop files here or click to browse",
+      "formats": "Images (JPG/PNG/WEBP) or PDF — 5MB max",
+      "browse": "Browse files",
+      "uploaded": "{count} file(s) uploaded",
+      "deleted": "File deleted",
+      "delete": "Delete",
+      "designLabel": "Design",
+      "confirmDelete": "Delete \"{name}\"?"
+    },
+    "invoice": {
+      "invoice": "Invoice",
+      "invoiceNumber": "Invoice #",
+      "issueDate": "Issued",
+      "billTo": "Bill to",
+      "orderInfo": "Order info",
+      "orderDate": "Order date",
+      "estimatedDelivery": "Estimated delivery",
+      "category": "Category",
+      "priority": "Priority",
+      "description": "Description",
+      "specs": "Specs",
+      "price": "Price",
+      "dimensions": "Dimensions",
+      "woodType": "Wood",
+      "color": "Color",
+      "finishType": "Finish",
+      "subtotal": "Subtotal",
+      "deposit": "Deposit",
+      "paid": "Paid",
+      "balanceDue": "Balance due",
+      "trackingTitle": "Track your order",
+      "trackingHint": "Scan the QR code or visit the link to follow your order in real time.",
+      "thankYou": "Thank you for your business",
+      "print": "Print",
+      "close": "Close"
+    },
     "wizard": {
       "createdSuccess": "Order {number} created successfully",
       "createOrder": "Create Order",
@@ -295,6 +381,16 @@
         "notesPlaceholder": "Notes for team only — not visible to customer"
       }
     }
+  },
+  "track": {
+    "orderNumber": "Order #",
+    "customer": "Customer",
+    "phone": "Phone",
+    "orderDate": "Order date",
+    "estimatedDelivery": "Estimated delivery",
+    "progress": "Progress",
+    "manufacturingStages": "Manufacturing Stages",
+    "contactHint": "For any questions please contact us"
   },
   "roles": {
     "ADMIN": "Administrator",

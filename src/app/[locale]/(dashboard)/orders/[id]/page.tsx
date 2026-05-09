@@ -12,6 +12,8 @@ import {
   Ruler,
   Palette,
   CreditCard,
+  Printer,
+  QrCode,
 } from "lucide-react";
 import { format } from "date-fns";
 import { ar as arLocale } from "date-fns/locale";
@@ -24,7 +26,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { OrderStatusBadge } from "@/components/orders/order-status-badge";
 import { OrderPriorityBadge } from "@/components/orders/order-priority-badge";
 import { OrderStageTimeline } from "@/components/orders/order-stage-timeline";
+import { StageActionsBar } from "@/components/orders/stage-actions-bar";
+import { PaymentsSection } from "@/components/orders/payments-section";
+import { FilesSection } from "@/components/orders/files-section";
 import { formatCurrency } from "@/lib/utils";
+import { generateQrDataUrl, buildTrackingUrl } from "@/lib/qr";
 
 export default async function OrderDetailPage({
   params,
@@ -44,6 +50,8 @@ export default async function OrderDetailPage({
   const dateLocale = locale === "ar" ? arLocale : undefined;
   const wa = (order.customer.whatsapp || order.customer.phone).replace(/\D/g, "");
   const balanceDue = (order.finalPrice ?? order.estimatedPrice) - order.paidAmount;
+  const trackingUrl = buildTrackingUrl(order.orderNumber);
+  const qrDataUrl = await generateQrDataUrl(trackingUrl, 180);
 
   return (
     <div className="space-y-6">
@@ -70,7 +78,13 @@ export default async function OrderDetailPage({
             </p>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
+          <a href={`/${locale}/orders/${id}/print`} target="_blank" rel="noreferrer">
+            <Button variant="outline">
+              <Printer className="h-4 w-4" />
+              {t("printInvoice")}
+            </Button>
+          </a>
           <a href={`https://wa.me/${wa}`} target="_blank" rel="noreferrer">
             <Button variant="outline" className="text-success border-success/40">
               <MessageCircle className="h-4 w-4" />
@@ -80,13 +94,24 @@ export default async function OrderDetailPage({
         </div>
       </div>
 
-      {/* Stage Timeline */}
+      {/* Stage Timeline + actions */}
       <Card>
         <CardHeader>
           <CardTitle>{t("timeline")}</CardTitle>
         </CardHeader>
-        <CardContent className="pt-2">
+        <CardContent className="pt-2 space-y-6">
           <OrderStageTimeline stages={order.stages} />
+          <StageActionsBar
+            orderId={order.id}
+            orderStatus={order.status}
+            stages={order.stages.map((s) => ({
+              id: s.id,
+              stageNumber: s.stageNumber,
+              stageName: s.stageName,
+              status: s.status,
+            }))}
+            currentStage={order.currentStage}
+          />
         </CardContent>
       </Card>
 
@@ -273,10 +298,66 @@ export default async function OrderDetailPage({
             </Card>
           )}
 
-          {/* Phase 4 placeholders */}
-          <Card className="border-dashed">
-            <CardContent className="p-6 text-center text-sm text-muted-foreground">
-              📁 {t("filesPhase4Hint")}
+          {/* Files */}
+          <Card>
+            <CardContent className="p-6">
+              <FilesSection
+                orderId={order.id}
+                files={order.files.map((f) => ({
+                  id: f.id,
+                  url: f.url,
+                  fileType: f.fileType,
+                  fileName: f.fileName,
+                  fileSize: f.fileSize,
+                  mimeType: f.mimeType,
+                  createdAt: f.createdAt,
+                }))}
+              />
+            </CardContent>
+          </Card>
+
+          {/* Payments */}
+          <Card>
+            <CardContent className="p-6">
+              <PaymentsSection
+                orderId={order.id}
+                payments={order.payments.map((p) => ({
+                  id: p.id,
+                  paymentNumber: p.paymentNumber,
+                  amount: Number(p.amount),
+                  type: p.type,
+                  method: p.method,
+                  notes: p.notes,
+                  paidAt: p.paidAt,
+                  receivedBy: null,
+                }))}
+                balanceDue={Math.max(0, balanceDue)}
+                canRecord={order.status !== "CANCELLED"}
+              />
+            </CardContent>
+          </Card>
+
+          {/* QR / Tracking */}
+          <Card>
+            <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={qrDataUrl}
+                alt="QR"
+                className="h-32 w-32 rounded-lg border border-border bg-white p-1"
+              />
+              <div className="flex-1 text-center sm:text-start space-y-2">
+                <h3 className="font-semibold flex items-center gap-2 justify-center sm:justify-start">
+                  <QrCode className="h-4 w-4 text-accent" />
+                  {t("publicTracking")}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  {t("publicTrackingHint")}
+                </p>
+                <p className="text-xs font-mono break-all bg-muted/50 rounded p-2" dir="ltr">
+                  {trackingUrl}
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
