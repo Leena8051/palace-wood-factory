@@ -163,6 +163,55 @@
     }
   },
   "orders": {
+    "title": "Orders",
+    "listSubtitle": "Manage manufacturing orders and production stages",
+    "addNew": "New Order",
+    "addNewSubtitle": "Create a new manufacturing order for a customer",
+    "emptyTitle": "No orders yet",
+    "emptyDescription": "Start by creating your first manufacturing order",
+    "notifyCustomer": "Notify Customer",
+    "timeline": "Order Stages",
+    "customerInfo": "Customer Info",
+    "pricing": "Pricing & Payment",
+    "specifications": "Specifications",
+    "description": "Description",
+    "internalNotes": "Internal Notes",
+    "category": "Category",
+    "productType": "Product Type",
+    "dimensions": "Dimensions",
+    "woodType": "Wood Type",
+    "color": "Color",
+    "finishType": "Finish",
+    "orderDate": "Order Date",
+    "estimatedDelivery": "Estimated Delivery",
+    "estimatedPrice": "Estimated Price",
+    "finalPrice": "Final Price",
+    "deposit": "Deposit",
+    "paid": "Paid",
+    "balance": "Balance Due",
+    "filesPhase4Hint": "File uploads (designs + production photos) — coming in Phase 4",
+    "table": {
+      "orderNumber": "Order #",
+      "customer": "Customer",
+      "product": "Product",
+      "status": "Status",
+      "priority": "Priority",
+      "price": "Price",
+      "created": "Created",
+      "actions": "Actions"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by order # or customer name...",
+      "allStatuses": "All statuses",
+      "allPriorities": "All priorities",
+      "allCategories": "All categories",
+      "clear": "Clear"
+    },
+    "categories": {
+      "DOORS": "Doors",
+      "FURNITURE": "Furniture",
+      "INTERIOR_DECOR": "Interior decor"
+    },
     "statuses": {
       "NEW": "New",
       "DESIGN": "Design",
@@ -172,6 +221,79 @@
       "READY": "Ready",
       "DELIVERED": "Delivered",
       "CANCELLED": "Cancelled"
+    },
+    "priorities": {
+      "LOW": "Low",
+      "NORMAL": "Normal",
+      "HIGH": "High",
+      "URGENT": "Urgent"
+    },
+    "stages": {
+      "DESIGN": "Design",
+      "CUTTING": "Cutting & Shaping",
+      "ASSEMBLY": "Assembly",
+      "FINISHING": "Finishing & Painting",
+      "DELIVERY": "Delivery & Installation"
+    },
+    "stageStatus": {
+      "PENDING": "Pending",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed",
+      "BLOCKED": "Blocked"
+    },
+    "customerPicker": {
+      "placeholder": "Search by name, phone, or code...",
+      "startTyping": "Type at least 2 characters to start searching",
+      "searching": "Searching...",
+      "noResults": "No customer found",
+      "createNew": "Add new customer"
+    },
+    "wizard": {
+      "createdSuccess": "Order {number} created successfully",
+      "createOrder": "Create Order",
+      "steps": {
+        "customer": "Customer",
+        "product": "Product",
+        "specs": "Specs",
+        "pricing": "Pricing",
+        "review": "Review"
+      },
+      "step1": {
+        "title": "Select Customer"
+      },
+      "step2": {
+        "title": "Product Type & Description",
+        "category": "Category",
+        "type": "Product type",
+        "typePlaceholder": "e.g., Main door, bedroom, kitchen...",
+        "description": "Detailed description",
+        "descriptionPlaceholder": "Describe the requested product in detail..."
+      },
+      "step3": {
+        "title": "Dimensions & Materials",
+        "width": "Width",
+        "height": "Height",
+        "depth": "Depth / Thickness",
+        "dimensions": "Dimensions",
+        "woodType": "Wood type",
+        "selectMaterial": "Select material...",
+        "color": "Color",
+        "colorPlaceholder": "Dark brown, white, etc.",
+        "finishType": "Finish type",
+        "selectFinish": "Select finish..."
+      },
+      "step4": {
+        "title": "Pricing & Priority",
+        "estimatedPrice": "Estimated price (SAR)",
+        "deposit": "Deposit (SAR)",
+        "priority": "Priority",
+        "estimatedDelivery": "Estimated delivery date"
+      },
+      "step5": {
+        "title": "Review & Confirm",
+        "notes": "Internal notes (optional)",
+        "notesPlaceholder": "Notes for team only — not visible to customer"
+      }
     }
   },
   "roles": {

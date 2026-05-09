@@ -163,6 +163,55 @@
     }
   },
   "orders": {
+    "title": "الطلبات",
+    "listSubtitle": "إدارة طلبات التصنيع ومراحل الإنتاج",
+    "addNew": "طلب جديد",
+    "addNewSubtitle": "أنشئ طلب تصنيع جديد لعميل",
+    "emptyTitle": "لا توجد طلبات بعد",
+    "emptyDescription": "ابدأ بإنشاء أول طلب تصنيع",
+    "notifyCustomer": "إخطار العميل",
+    "timeline": "مراحل الطلب",
+    "customerInfo": "بيانات العميل",
+    "pricing": "التسعير والدفع",
+    "specifications": "المواصفات",
+    "description": "الوصف",
+    "internalNotes": "ملاحظات داخلية",
+    "category": "الفئة",
+    "productType": "نوع المنتج",
+    "dimensions": "الأبعاد",
+    "woodType": "نوع الخشب",
+    "color": "اللون",
+    "finishType": "نوع التشطيب",
+    "orderDate": "تاريخ الطلب",
+    "estimatedDelivery": "موعد التسليم المتوقع",
+    "estimatedPrice": "السعر التقديري",
+    "finalPrice": "السعر النهائي",
+    "deposit": "عربون",
+    "paid": "مدفوع",
+    "balance": "المتبقي",
+    "filesPhase4Hint": "رفع التصاميم وصور الإنتاج — قريباً في المرحلة 4",
+    "table": {
+      "orderNumber": "رقم الطلب",
+      "customer": "العميل",
+      "product": "المنتج",
+      "status": "الحالة",
+      "priority": "الأولوية",
+      "price": "السعر",
+      "created": "تاريخ الإنشاء",
+      "actions": "إجراءات"
+    },
+    "filters": {
+      "searchPlaceholder": "ابحث برقم الطلب أو اسم العميل...",
+      "allStatuses": "كل الحالات",
+      "allPriorities": "كل الأولويات",
+      "allCategories": "كل الفئات",
+      "clear": "مسح"
+    },
+    "categories": {
+      "DOORS": "أبواب",
+      "FURNITURE": "أثاث",
+      "INTERIOR_DECOR": "ديكور داخلي"
+    },
     "statuses": {
       "NEW": "جديد",
       "DESIGN": "تصميم",
@@ -172,6 +221,79 @@
       "READY": "جاهز",
       "DELIVERED": "تم التسليم",
       "CANCELLED": "ملغي"
+    },
+    "priorities": {
+      "LOW": "منخفضة",
+      "NORMAL": "عادية",
+      "HIGH": "عالية",
+      "URGENT": "عاجل"
+    },
+    "stages": {
+      "DESIGN": "التصميم",
+      "CUTTING": "القص والتشكيل",
+      "ASSEMBLY": "التجميع",
+      "FINISHING": "التشطيب والدهان",
+      "DELIVERY": "التسليم والتركيب"
+    },
+    "stageStatus": {
+      "PENDING": "بانتظار البدء",
+      "IN_PROGRESS": "قيد التنفيذ",
+      "COMPLETED": "مكتمل",
+      "BLOCKED": "متوقف"
+    },
+    "customerPicker": {
+      "placeholder": "ابحث بالاسم أو رقم الجوال أو الكود...",
+      "startTyping": "اكتب على الأقل حرفين للبدء بالبحث",
+      "searching": "جاري البحث...",
+      "noResults": "لا يوجد عميل بهذا الاسم",
+      "createNew": "إضافة عميل جديد"
+    },
+    "wizard": {
+      "createdSuccess": "تم إنشاء الطلب {number} بنجاح",
+      "createOrder": "إنشاء الطلب",
+      "steps": {
+        "customer": "العميل",
+        "product": "المنتج",
+        "specs": "المواصفات",
+        "pricing": "التسعير",
+        "review": "مراجعة"
+      },
+      "step1": {
+        "title": "اختيار العميل"
+      },
+      "step2": {
+        "title": "نوع المنتج والوصف",
+        "category": "فئة المنتج",
+        "type": "نوع المنتج",
+        "typePlaceholder": "مثال: باب رئيسي، غرفة نوم، مطبخ...",
+        "description": "وصف تفصيلي",
+        "descriptionPlaceholder": "اكتب وصفاً تفصيلياً للمنتج المطلوب..."
+      },
+      "step3": {
+        "title": "المقاسات والمواد",
+        "width": "العرض",
+        "height": "الارتفاع",
+        "depth": "العمق / السماكة",
+        "dimensions": "الأبعاد",
+        "woodType": "نوع الخشب",
+        "selectMaterial": "اختر المادة...",
+        "color": "اللون",
+        "colorPlaceholder": "بني داكن، أبيض، إلخ",
+        "finishType": "نوع التشطيب",
+        "selectFinish": "اختر التشطيب..."
+      },
+      "step4": {
+        "title": "التسعير والأولوية",
+        "estimatedPrice": "السعر التقديري (ر.س)",
+        "deposit": "العربون (ر.س)",
+        "priority": "الأولوية",
+        "estimatedDelivery": "موعد التسليم المتوقع"
+      },
+      "step5": {
+        "title": "مراجعة وتأكيد",
+        "notes": "ملاحظات داخلية (اختياري)",
+        "notesPlaceholder": "أي ملاحظات للفريق فقط، لا تظهر للعميل"
+      }
     }
   },
   "roles": {

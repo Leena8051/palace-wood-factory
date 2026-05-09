@@ -49,6 +49,63 @@ export const PRODUCT_CATEGORIES = [
 ] as const;
 export type ProductCategory = (typeof PRODUCT_CATEGORIES)[number];
 
+export const STAGE_STATUSES = [
+  "PENDING",
+  "IN_PROGRESS",
+  "COMPLETED",
+  "BLOCKED",
+] as const;
+export type StageStatus = (typeof STAGE_STATUSES)[number];
+
+/** The 5 stages every order goes through, in order. */
+export const ORDER_STAGES = [
+  { number: 1, name: "DESIGN" },
+  { number: 2, name: "CUTTING" },
+  { number: 3, name: "ASSEMBLY" },
+  { number: 4, name: "FINISHING" },
+  { number: 5, name: "DELIVERY" },
+] as const;
+export type OrderStageName = (typeof ORDER_STAGES)[number]["name"];
+
+/** Maps order status -> the stage number it currently sits at. */
+export const STATUS_TO_STAGE: Record<OrderStatus, number> = {
+  NEW: 1,
+  DESIGN: 1,
+  APPROVED: 2,
+  PRODUCTION: 3,
+  FINISHING: 4,
+  READY: 5,
+  DELIVERED: 5,
+  CANCELLED: 0,
+};
+
+/** Common wood materials used in the factory. */
+export const WOOD_TYPES = [
+  "زان",
+  "سنديان (بلوط)",
+  "ماهوجني",
+  "خشب الجوز",
+  "MDF",
+  "MDF لاكيه",
+  "خشب الصنوبر",
+  "خشب البتولا",
+  "أبلكاش",
+  "خشب أحمر",
+  "خشب طبيعي مستورد",
+  "أخرى",
+] as const;
+
+/** Available finish types. */
+export const FINISH_TYPES = [
+  "لاكيه لامع",
+  "لاكيه مطفي",
+  "دهان طبيعي",
+  "ورنيش",
+  "بياض",
+  "خشب طبيعي بدون دهان",
+  "تشطيب خاص",
+] as const;
+
 /** Common Saudi cities for the city dropdown. */
 export const SAUDI_CITIES = [
   "الرياض",
