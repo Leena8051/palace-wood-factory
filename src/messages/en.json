@@ -401,6 +401,100 @@
     "WAREHOUSE_KEEPER": "Warehouse Keeper",
     "TECHNICIAN": "Technician"
   },
+  "payments": {
+    "subtitle": "Complete record of all received payments",
+    "emptyTitle": "No payments yet",
+    "emptyDescription": "Payments will appear here once recorded from order pages",
+    "stats": {
+      "totalCollected": "Total Collected",
+      "thisMonth": "This Month",
+      "totalTransactions": "Transactions",
+      "avgTransaction": "Avg. Payment"
+    },
+    "filters": {
+      "allTypes": "All types",
+      "allMethods": "All methods",
+      "clear": "Clear"
+    },
+    "table": {
+      "number": "Number",
+      "order": "Order",
+      "customer": "Customer",
+      "type": "Type",
+      "method": "Method",
+      "amount": "Amount",
+      "date": "Date",
+      "recordedBy": "Recorded by"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Configure factory information and general settings",
+    "saved": "Settings saved successfully",
+    "sections": {
+      "factory": "Factory Information"
+    },
+    "fields": {
+      "factoryNameAr": "Factory name (Arabic)",
+      "factoryNameEn": "Factory name (English)",
+      "phone": "Phone number",
+      "email": "Email",
+      "city": "City",
+      "address": "Address",
+      "warrantyDays": "Warranty period (days)",
+      "vatNumber": "VAT number",
+      "crNumber": "Commercial register"
+    },
+    "placeholders": {
+      "factoryNameAr": "مصنع أخشاب القصور",
+      "factoryNameEn": "Palace Wood Factory",
+      "phone": "+966500000000",
+      "email": "info@palacewood.sa",
+      "city": "Riyadh",
+      "address": "Industrial district, road...",
+      "warrantyDays": "365",
+      "vatNumber": "300XXXXXXXXX",
+      "crNumber": "10XXXXXXXX"
+    }
+  },
+  "reports": {
+    "title": "Reports",
+    "subtitle": "Comprehensive view of factory performance and sales",
+    "estimated": "estimated",
+    "lastUpdated": "Last updated:",
+    "kpi": {
+      "revenue": "Total Revenue",
+      "orders": "Orders",
+      "customers": "Customers",
+      "openIssues": "Open Issues",
+      "active": "active",
+      "thisMonth": "this month",
+      "complaints": "complaints",
+      "maintenance": "maintenance",
+      "vsLastMonth": "vs last month",
+      "noComparison": "No data for comparison"
+    },
+    "charts": {
+      "monthlyRevenue": "Monthly Revenue (last 6 months)",
+      "ordersByCategory": "Orders by Category",
+      "ordersByStatus": "Orders by Status",
+      "complaintBreakdown": "Complaint Breakdown"
+    },
+    "complaints": {
+      "resolved": "Resolved",
+      "avgTime": "Avg. resolution time",
+      "avgRating": "Avg. rating"
+    },
+    "tables": {
+      "topCustomers": "Top Customers",
+      "maintenanceSummary": "Maintenance Summary"
+    },
+    "maintenance": {
+      "avgDays": "Avg. days to close",
+      "byType": "By type",
+      "byStatus": "By status"
+    }
+  },
   "complaints": {
     "title": "Complaints",
     "listSubtitle": "Track and resolve customer complaints",

@@ -401,6 +401,100 @@
     "WAREHOUSE_KEEPER": "أمين المستودع",
     "TECHNICIAN": "فني"
   },
+  "payments": {
+    "subtitle": "سجل كامل بجميع الدفعات المستلمة",
+    "emptyTitle": "لا توجد دفعات بعد",
+    "emptyDescription": "سيتم عرض الدفعات هنا فور تسجيلها من صفحات الطلبات",
+    "stats": {
+      "totalCollected": "إجمالي المحصّل",
+      "thisMonth": "هذا الشهر",
+      "totalTransactions": "عدد العمليات",
+      "avgTransaction": "متوسط الدفعة"
+    },
+    "filters": {
+      "allTypes": "كل الأنواع",
+      "allMethods": "كل طرق الدفع",
+      "clear": "مسح"
+    },
+    "table": {
+      "number": "الرقم",
+      "order": "الطلب",
+      "customer": "العميل",
+      "type": "النوع",
+      "method": "طريقة الدفع",
+      "amount": "المبلغ",
+      "date": "التاريخ",
+      "recordedBy": "سجّله"
+    }
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "ضبط بيانات المصنع والإعدادات العامة",
+    "saved": "تم حفظ الإعدادات بنجاح",
+    "sections": {
+      "factory": "بيانات المصنع"
+    },
+    "fields": {
+      "factoryNameAr": "اسم المصنع (عربي)",
+      "factoryNameEn": "اسم المصنع (إنجليزي)",
+      "phone": "رقم الهاتف",
+      "email": "البريد الإلكتروني",
+      "city": "المدينة",
+      "address": "العنوان",
+      "warrantyDays": "فترة الضمان (بالأيام)",
+      "vatNumber": "الرقم الضريبي",
+      "crNumber": "السجل التجاري"
+    },
+    "placeholders": {
+      "factoryNameAr": "مصنع أخشاب القصور",
+      "factoryNameEn": "Palace Wood Factory",
+      "phone": "+966500000000",
+      "email": "info@palacewood.sa",
+      "city": "الرياض",
+      "address": "حي الصناعية، طريق...",
+      "warrantyDays": "365",
+      "vatNumber": "300XXXXXXXXX",
+      "crNumber": "10XXXXXXXX"
+    }
+  },
+  "reports": {
+    "title": "التقارير",
+    "subtitle": "نظرة شاملة على أداء المصنع والمبيعات",
+    "estimated": "تقديري",
+    "lastUpdated": "آخر تحديث:",
+    "kpi": {
+      "revenue": "إجمالي الإيرادات",
+      "orders": "الطلبات",
+      "customers": "العملاء",
+      "openIssues": "قضايا مفتوحة",
+      "active": "نشط",
+      "thisMonth": "هذا الشهر",
+      "complaints": "شكاوى",
+      "maintenance": "صيانة",
+      "vsLastMonth": "مقارنة بالشهر الماضي",
+      "noComparison": "لا يوجد بيانات للمقارنة"
+    },
+    "charts": {
+      "monthlyRevenue": "الإيرادات الشهرية (آخر 6 أشهر)",
+      "ordersByCategory": "الطلبات حسب الفئة",
+      "ordersByStatus": "الطلبات حسب الحالة",
+      "complaintBreakdown": "تحليل الشكاوى"
+    },
+    "complaints": {
+      "resolved": "تم حلها",
+      "avgTime": "متوسط وقت الحل",
+      "avgRating": "متوسط التقييم"
+    },
+    "tables": {
+      "topCustomers": "أفضل العملاء",
+      "maintenanceSummary": "ملخص الصيانة"
+    },
+    "maintenance": {
+      "avgDays": "متوسط أيام الإغلاق",
+      "byType": "حسب النوع",
+      "byStatus": "حسب الحالة"
+    }
+  },
   "complaints": {
     "title": "الشكاوى",
     "listSubtitle": "تتبع وحل شكاوى العملاء",
