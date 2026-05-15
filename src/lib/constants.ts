@@ -95,6 +95,50 @@ export const WOOD_TYPES = [
   "أخرى",
 ] as const;
 
+// ============================================================
+// COMPLAINTS
+// ============================================================
+
+export const COMPLAINT_CATEGORIES = [
+  "QUALITY",
+  "DELAY",
+  "DAMAGE",
+  "WRONG_SPEC",
+  "OTHER",
+] as const;
+export type ComplaintCategory = (typeof COMPLAINT_CATEGORIES)[number];
+
+export const COMPLAINT_STATUSES = [
+  "OPEN",
+  "IN_PROGRESS",
+  "RESOLVED",
+  "CLOSED",
+] as const;
+export type ComplaintStatus = (typeof COMPLAINT_STATUSES)[number];
+
+// ============================================================
+// MAINTENANCE
+// ============================================================
+
+export const MAINTENANCE_TYPES = [
+  "WARRANTY",
+  "PAID",
+  "FREE_GOODWILL",
+] as const;
+export type MaintenanceType = (typeof MAINTENANCE_TYPES)[number];
+
+export const MAINTENANCE_STATUSES = [
+  "REQUESTED",
+  "SCHEDULED",
+  "IN_PROGRESS",
+  "COMPLETED",
+  "CANCELLED",
+] as const;
+export type MaintenanceStatus = (typeof MAINTENANCE_STATUSES)[number];
+
+/** Warranty period for delivered orders, in days. */
+export const WARRANTY_DAYS = 365;
+
 /** Available finish types. */
 export const FINISH_TYPES = [
   "لاكيه لامع",

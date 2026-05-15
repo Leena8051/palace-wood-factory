@@ -410,11 +410,227 @@ async function main() {
     console.log(`ℹ️  Orders already exist (${existingOrderCount}) — skipped`);
   }
 
+  // ============================================================
+  // Technician user
+  // ============================================================
+  const technician = await prisma.user.upsert({
+    where: { email: "tech@palacewood.sa" },
+    update: {},
+    create: {
+      email: "tech@palacewood.sa",
+      name: "فهد الدوسري",
+      role: "TECHNICIAN",
+      passwordHash,
+      isActive: true,
+    },
+  });
+  console.log("✅ Technician user seeded:", technician.email);
+
+  // ============================================================
+  // Complaints seed (5 tickets)
+  // ============================================================
+  const existingComplaintCount = await prisma.complaint.count();
+  if (existingComplaintCount === 0) {
+    // Pick the first two customers to attach complaints to
+    const allCustomers = await prisma.customer.findMany({
+      take: 5,
+      orderBy: { createdAt: "asc" },
+    });
+    const firstOrder = await prisma.order.findFirst({ orderBy: { createdAt: "asc" } });
+
+    const complaintSeeds = [
+      {
+        ticketNumber: `CMP-${year}-001`,
+        customerId: allCustomers[0]?.id ?? admin.id,
+        orderId: firstOrder?.id ?? null,
+        category: "QUALITY",
+        priority: "HIGH",
+        status: "OPEN",
+        title: "الدهان غير متساوٍ على باب غرفة النوم",
+        description:
+          "لاحظ العميل أن دهان الباب غير متساوٍ في الجزء السفلي، وتظهر بقع بيضاء في ثلاثة أماكن مختلفة. الباب استلمه منذ أسبوعين.",
+        daysAgo: 3,
+      },
+      {
+        ticketNumber: `CMP-${year}-002`,
+        customerId: allCustomers[1]?.id ?? admin.id,
+        orderId: null,
+        category: "DELAY",
+        priority: "NORMAL",
+        status: "IN_PROGRESS",
+        title: "تأخر موعد التسليم عن الوعد المحدد",
+        description:
+          "وُعد العميل بالتسليم في نهاية الشهر الماضي لكن الطلب لم يُسلَّم بعد. يطلب معرفة الموعد الدقيق.",
+        daysAgo: 7,
+      },
+      {
+        ticketNumber: `CMP-${year}-003`,
+        customerId: allCustomers[2]?.id ?? admin.id,
+        orderId: null,
+        category: "DAMAGE",
+        priority: "URGENT",
+        status: "OPEN",
+        title: "خدش عميق في سطح الطاولة عند التسليم",
+        description:
+          "اكتشف العميل خدشاً عميقاً في سطح الطاولة الخشبية فور فتح التغليف. المنتج كان مغلفاً ولكن الخدش واضح جداً.",
+        daysAgo: 1,
+      },
+      {
+        ticketNumber: `CMP-${year}-004`,
+        customerId: allCustomers[3]?.id ?? admin.id,
+        orderId: null,
+        category: "WRONG_SPEC",
+        priority: "HIGH",
+        status: "RESOLVED",
+        title: "لون الخشب مختلف عن المطلوب",
+        description:
+          "طُلب اللون بني فاتح لكن جاء بني داكن. العميل يرغب في إعادة الطلاء أو استبدال القطع.",
+        daysAgo: 14,
+      },
+      {
+        ticketNumber: `CMP-${year}-005`,
+        customerId: allCustomers[4]?.id ?? admin.id,
+        orderId: null,
+        category: "OTHER",
+        priority: "LOW",
+        status: "CLOSED",
+        title: "استفسار عن فترة الضمان",
+        description:
+          "يسأل العميل عن تفاصيل فترة الضمان وما تشمله من عيوب التصنيع.",
+        daysAgo: 21,
+      },
+    ];
+
+    for (const c of complaintSeeds) {
+      const createdAt = new Date(Date.now() - c.daysAgo * 86400_000);
+      await prisma.complaint.create({
+        data: {
+          ticketNumber: c.ticketNumber,
+          customerId: c.customerId,
+          orderId: c.orderId,
+          category: c.category,
+          priority: c.priority,
+          status: c.status,
+          title: c.title,
+          description: c.description,
+          createdAt,
+          resolvedAt:
+            c.status === "RESOLVED" || c.status === "CLOSED"
+              ? new Date(createdAt.getTime() + 3 * 86400_000)
+              : null,
+          resolution:
+            c.status === "RESOLVED" || c.status === "CLOSED"
+              ? "تم التواصل مع العميل وحل المشكلة بشكل مُرضٍ. تم إجراء التعديلات المطلوبة."
+              : null,
+          resolvedById:
+            c.status === "RESOLVED" || c.status === "CLOSED" ? ops.id : null,
+          rating: c.status === "RESOLVED" ? 4 : c.status === "CLOSED" ? 5 : null,
+        },
+      });
+    }
+    console.log(`✅ ${complaintSeeds.length} complaints seeded`);
+  } else {
+    console.log(`ℹ️  Complaints already exist (${existingComplaintCount}) — skipped`);
+  }
+
+  // ============================================================
+  // Maintenance requests seed (4 requests)
+  // ============================================================
+  const existingMaintenanceCount = await prisma.maintenanceRequest.count();
+  if (existingMaintenanceCount === 0) {
+    const allCustomers = await prisma.customer.findMany({
+      take: 4,
+      orderBy: { createdAt: "asc" },
+    });
+    const deliveredOrder = await prisma.order.findFirst({
+      where: { status: "DELIVERED" },
+    });
+
+    const maintenanceSeeds = [
+      {
+        requestNumber: `MNT-${year}-001`,
+        customerId: allCustomers[0]?.id ?? admin.id,
+        originalOrderId: deliveredOrder?.id ?? null,
+        type: "WARRANTY",
+        status: "REQUESTED",
+        reportedIssue: "صوت طقطقة في مفصل الباب الرئيسي عند الفتح والإغلاق",
+        description: "العميل يشكو من صوت متكرر في مفصل الباب منذ أسبوع.",
+        technicianId: technician.id,
+        daysAgo: 2,
+      },
+      {
+        requestNumber: `MNT-${year}-002`,
+        customerId: allCustomers[1]?.id ?? admin.id,
+        originalOrderId: null,
+        type: "PAID",
+        status: "SCHEDULED",
+        reportedIssue: "خدوش على سطح خزانة المطبخ تحتاج إعادة طلاء",
+        description: "يرغب العميل في إعادة طلاء الخزانة بشكل كامل. متفق على السعر.",
+        technicianId: technician.id,
+        scheduledDate: new Date(Date.now() + 2 * 86400_000), // 2 days from now
+        estimatedCost: 450,
+        daysAgo: 5,
+      },
+      {
+        requestNumber: `MNT-${year}-003`,
+        customerId: allCustomers[2]?.id ?? admin.id,
+        originalOrderId: null,
+        type: "FREE_GOODWILL",
+        status: "IN_PROGRESS",
+        reportedIssue: "شقوق في الخشب بسبب الرطوبة",
+        description: "شقوق ظهرت بسبب الرطوبة في الحمام. الصيانة مجانية كبادرة حسن نية.",
+        technicianId: technician.id,
+        daysAgo: 1,
+      },
+      {
+        requestNumber: `MNT-${year}-004`,
+        customerId: allCustomers[3]?.id ?? admin.id,
+        originalOrderId: deliveredOrder?.id ?? null,
+        type: "WARRANTY",
+        status: "COMPLETED",
+        reportedIssue: "رف الخزانة انكسر من المنتصف",
+        description: "رف خشبي انكسر بعد أقل من شهر من الاستلام. تم استبداله في الزيارة.",
+        technicianId: technician.id,
+        finalCost: 0,
+        notes: "تم استبدال الرف المكسور برف جديد. العميل راضٍ تماماً.",
+        daysAgo: 10,
+      },
+    ];
+
+    for (const m of maintenanceSeeds) {
+      const createdAt = new Date(Date.now() - m.daysAgo * 86400_000);
+      await prisma.maintenanceRequest.create({
+        data: {
+          requestNumber: m.requestNumber,
+          customerId: m.customerId,
+          originalOrderId: m.originalOrderId ?? null,
+          type: m.type,
+          status: m.status,
+          reportedIssue: m.reportedIssue,
+          description: m.description ?? null,
+          technicianId: m.technicianId,
+          scheduledDate: (m as { scheduledDate?: Date }).scheduledDate ?? null,
+          estimatedCost: (m as { estimatedCost?: number }).estimatedCost ?? null,
+          finalCost: (m as { finalCost?: number }).finalCost ?? null,
+          notes: (m as { notes?: string }).notes ?? null,
+          completedDate: m.status === "COMPLETED"
+            ? new Date(createdAt.getTime() + 2 * 86400_000)
+            : null,
+          createdAt,
+        },
+      });
+    }
+    console.log(`✅ ${maintenanceSeeds.length} maintenance requests seeded`);
+  } else {
+    console.log(`ℹ️  Maintenance requests already exist (${existingMaintenanceCount}) — skipped`);
+  }
+
   console.log("\n🎉 Seed complete!");
   console.log("\n👉 Login credentials:");
   console.log("   admin@palacewood.sa / admin123  (Admin)");
   console.log("   ops@palacewood.sa   / admin123  (Operations)");
   console.log("   cs@palacewood.sa    / admin123  (Customer Service)");
+  console.log("   tech@palacewood.sa  / admin123  (Technician)");
 }
 
 main()

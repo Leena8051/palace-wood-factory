@@ -33,3 +33,23 @@ export async function generateOrderNumber(): Promise<string> {
   });
   return `ORD-${year}-${String(count + 1).padStart(4, "0")}`;
 }
+
+export async function generateComplaintCode(): Promise<string> {
+  const year = new Date().getFullYear();
+  const startOfYear = new Date(year, 0, 1);
+  const startOfNextYear = new Date(year + 1, 0, 1);
+  const count = await prisma.complaint.count({
+    where: { createdAt: { gte: startOfYear, lt: startOfNextYear } },
+  });
+  return `CMP-${year}-${String(count + 1).padStart(3, "0")}`;
+}
+
+export async function generateMaintenanceCode(): Promise<string> {
+  const year = new Date().getFullYear();
+  const startOfYear = new Date(year, 0, 1);
+  const startOfNextYear = new Date(year + 1, 0, 1);
+  const count = await prisma.maintenanceRequest.count({
+    where: { createdAt: { gte: startOfYear, lt: startOfNextYear } },
+  });
+  return `MNT-${year}-${String(count + 1).padStart(3, "0")}`;
+}

@@ -400,5 +400,174 @@
     "PRODUCTION_SUPERVISOR": "Production Supervisor",
     "WAREHOUSE_KEEPER": "Warehouse Keeper",
     "TECHNICIAN": "Technician"
+  },
+  "complaints": {
+    "title": "Complaints",
+    "listSubtitle": "Track and resolve customer complaints",
+    "addNew": "New Complaint",
+    "addNewSubtitle": "Log a new customer complaint",
+    "complaintDetails": "Complaint Details",
+    "create": "Log Complaint",
+    "createdSuccess": "Complaint {number} logged successfully",
+    "statusUpdated": "Status updated",
+    "emptyTitle": "No complaints",
+    "emptyDescription": "No complaints have been logged yet",
+    "linkedOrder": "Linked order",
+    "assignedTo": "Assigned to",
+    "unassigned": "Unassigned",
+    "resolution": "Resolution",
+    "resolvedAt": "Resolved at",
+    "resolvedBy": "Resolved by",
+    "rating": "Customer rating",
+    "statuses": {
+      "OPEN": "Open",
+      "IN_PROGRESS": "In Progress",
+      "RESOLVED": "Resolved",
+      "CLOSED": "Closed"
+    },
+    "categories": {
+      "QUALITY": "Quality",
+      "DELAY": "Delay",
+      "DAMAGE": "Damage",
+      "WRONG_SPEC": "Wrong Spec",
+      "OTHER": "Other"
+    },
+    "fields": {
+      "customer": "Customer",
+      "orderIdOptional": "Order # (optional)",
+      "orderIdHint": "Link this complaint to an existing order for easier tracking",
+      "category": "Category",
+      "priority": "Priority",
+      "title": "Complaint title",
+      "titlePlaceholder": "Write a clear, concise title...",
+      "description": "Details",
+      "descriptionPlaceholder": "Describe the complaint in detail: what happened, when, and the impact..."
+    },
+    "resolve": {
+      "resolveButton": "Resolve",
+      "title": "Resolve Complaint",
+      "resolution": "Resolution description",
+      "resolutionRequired": "Please describe how the complaint was resolved",
+      "resolutionPlaceholder": "Describe how the complaint was resolved...",
+      "ratingOptional": "Customer rating (optional)",
+      "ratingHint": "5 stars = Excellent, 1 star = Poor",
+      "resolved": "Complaint resolved",
+      "confirm": "Confirm resolution"
+    },
+    "thread": {
+      "title": "Responses",
+      "empty": "No responses yet",
+      "addResponse": "Add response",
+      "placeholder": "Type your response here...",
+      "internalToggle": "Internal only",
+      "internalLabel": "Internal",
+      "sent": "Response sent",
+      "send": "Send"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by ticket # or customer name...",
+      "allStatuses": "All statuses",
+      "allCategories": "All categories",
+      "allPriorities": "All priorities",
+      "clear": "Clear"
+    }
+  },
+  "maintenance": {
+    "title": "Maintenance",
+    "listSubtitle": "Manage maintenance requests and technician visits",
+    "addNew": "New Request",
+    "addNewSubtitle": "Log a maintenance request for a customer",
+    "issueDetails": "Issue Details",
+    "scheduling": "Scheduling & Technician",
+    "create": "Log Request",
+    "createdSuccess": "Maintenance request {number} logged successfully",
+    "emptyTitle": "No maintenance requests",
+    "emptyDescription": "No maintenance requests have been logged yet",
+    "requestInfo": "Request Info",
+    "customerInfo": "Customer",
+    "linkedOrder": "Original Order",
+    "noLinkedOrder": "No linked order",
+    "technicianInfo": "Technician",
+    "unassigned": "Unassigned",
+    "estimatedCostLabel": "Estimated cost",
+    "finalCostLabel": "Final cost",
+    "notSpecified": "Not specified",
+    "completionNotes": "Completion notes",
+    "customerSignatureLabel": "Customer signature",
+    "cancelReasonLabel": "Cancellation reason",
+    "scheduledDateLabel": "Scheduled date",
+    "types": {
+      "WARRANTY": "Warranty",
+      "PAID": "Paid",
+      "FREE_GOODWILL": "Goodwill"
+    },
+    "statuses": {
+      "REQUESTED": "Requested",
+      "SCHEDULED": "Scheduled",
+      "IN_PROGRESS": "In Progress",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "warranty": {
+      "active": "Warranty Active",
+      "expired": "Warranty Expired",
+      "notDelivered": "Not Delivered"
+    },
+    "fields": {
+      "customer": "Customer",
+      "originalOrder": "Original order #",
+      "originalOrderHint": "System will automatically check warranty status",
+      "type": "Maintenance type",
+      "estimatedCost": "Estimated cost (SAR)",
+      "reportedIssue": "Reported issue",
+      "reportedIssuePlaceholder": "Describe the issue reported by the customer...",
+      "description": "Additional notes",
+      "descriptionPlaceholder": "Any additional details or internal notes...",
+      "scheduledDate": "Scheduled date",
+      "technician": "Assigned technician",
+      "technicianUnassigned": "— Unassigned —",
+      "noTechnicians": "No technicians registered in the system"
+    },
+    "actions": {
+      "start": "Start",
+      "complete": "Complete",
+      "cancel": "Cancel",
+      "started": "Maintenance started",
+      "completed": "Maintenance completed",
+      "cancelled": "Request cancelled",
+      "completeTitle": "Complete Maintenance Request",
+      "cancelTitle": "Cancel Maintenance Request",
+      "finalCost": "Final cost (SAR)",
+      "notes": "Completion notes",
+      "notesPlaceholder": "Any closing notes...",
+      "customerSignature": "Customer signature",
+      "signatureRequired": "Customer signature is required to complete",
+      "confirmComplete": "Confirm completion",
+      "confirmCancel": "Confirm cancellation",
+      "cancelReason": "Cancellation reason",
+      "cancelReasonRequired": "Cancellation reason is required",
+      "alreadyCompleted": "This request is already completed",
+      "alreadyCancelled": "This request has been cancelled"
+    },
+    "signature": {
+      "hint": "Draw signature inside the box",
+      "clear": "Clear",
+      "empty": "No signature yet"
+    },
+    "table": {
+      "requestNumber": "Request #",
+      "customer": "Customer",
+      "type": "Type",
+      "status": "Status",
+      "scheduled": "Scheduled",
+      "technician": "Technician",
+      "actions": "Actions"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by request # or customer name...",
+      "allStatuses": "All statuses",
+      "allTypes": "All types",
+      "clear": "Clear"
+    }
   }
 }

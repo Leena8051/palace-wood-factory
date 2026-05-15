@@ -400,5 +400,174 @@
     "PRODUCTION_SUPERVISOR": "مشرف الإنتاج",
     "WAREHOUSE_KEEPER": "أمين المستودع",
     "TECHNICIAN": "فني"
+  },
+  "complaints": {
+    "title": "الشكاوى",
+    "listSubtitle": "تتبع وحل شكاوى العملاء",
+    "addNew": "شكوى جديدة",
+    "addNewSubtitle": "تسجيل شكوى عميل جديدة",
+    "complaintDetails": "تفاصيل الشكوى",
+    "create": "تسجيل الشكوى",
+    "createdSuccess": "تم تسجيل الشكوى {number} بنجاح",
+    "statusUpdated": "تم تحديث حالة الشكوى",
+    "emptyTitle": "لا توجد شكاوى",
+    "emptyDescription": "لم يتم تسجيل أي شكاوى حتى الآن",
+    "linkedOrder": "الطلب المرتبط",
+    "assignedTo": "مسؤول المتابعة",
+    "unassigned": "غير مسند",
+    "resolution": "الحل",
+    "resolvedAt": "تاريخ الحل",
+    "resolvedBy": "تم الحل بواسطة",
+    "rating": "تقييم العميل",
+    "statuses": {
+      "OPEN": "مفتوحة",
+      "IN_PROGRESS": "قيد المعالجة",
+      "RESOLVED": "محلولة",
+      "CLOSED": "مغلقة"
+    },
+    "categories": {
+      "QUALITY": "جودة",
+      "DELAY": "تأخير",
+      "DAMAGE": "تلف",
+      "WRONG_SPEC": "مواصفات خاطئة",
+      "OTHER": "أخرى"
+    },
+    "fields": {
+      "customer": "العميل",
+      "orderIdOptional": "رقم الطلب (اختياري)",
+      "orderIdHint": "اربط الشكوى بطلب موجود لسهولة المتابعة",
+      "category": "الفئة",
+      "priority": "الأولوية",
+      "title": "عنوان الشكوى",
+      "titlePlaceholder": "اكتب عنواناً واضحاً للشكوى...",
+      "description": "التفاصيل",
+      "descriptionPlaceholder": "اشرح الشكوى بالتفصيل: ما المشكلة؟ متى حدثت؟ ما التأثير؟"
+    },
+    "resolve": {
+      "resolveButton": "حل الشكوى",
+      "title": "تسجيل حل الشكوى",
+      "resolution": "وصف الحل",
+      "resolutionRequired": "يرجى كتابة وصف الحل",
+      "resolutionPlaceholder": "اشرح كيف تم حل الشكوى...",
+      "ratingOptional": "تقييم العميل (اختياري)",
+      "ratingHint": "5 نجوم = ممتاز، 1 نجمة = سيء",
+      "resolved": "تم تسجيل الحل بنجاح",
+      "confirm": "تأكيد الحل"
+    },
+    "thread": {
+      "title": "الردود",
+      "empty": "لا توجد ردود بعد",
+      "addResponse": "إضافة رد",
+      "placeholder": "اكتب ردك هنا...",
+      "internalToggle": "داخلي فقط",
+      "internalLabel": "داخلي",
+      "sent": "تم إرسال الرد",
+      "send": "إرسال"
+    },
+    "filters": {
+      "searchPlaceholder": "ابحث برقم التذكرة أو اسم العميل...",
+      "allStatuses": "كل الحالات",
+      "allCategories": "كل الفئات",
+      "allPriorities": "كل الأولويات",
+      "clear": "مسح"
+    }
+  },
+  "maintenance": {
+    "title": "الصيانة",
+    "listSubtitle": "إدارة طلبات الصيانة وزيارات الفنيين",
+    "addNew": "طلب صيانة جديد",
+    "addNewSubtitle": "تسجيل طلب صيانة لعميل",
+    "issueDetails": "تفاصيل المشكلة",
+    "scheduling": "الجدولة والفني",
+    "create": "تسجيل الطلب",
+    "createdSuccess": "تم تسجيل طلب الصيانة {number} بنجاح",
+    "emptyTitle": "لا توجد طلبات صيانة",
+    "emptyDescription": "لم يتم تسجيل أي طلبات صيانة حتى الآن",
+    "requestInfo": "بيانات الطلب",
+    "customerInfo": "بيانات العميل",
+    "linkedOrder": "الطلب الأصلي",
+    "noLinkedOrder": "لا يوجد طلب مرتبط",
+    "technicianInfo": "الفني",
+    "unassigned": "غير مسند",
+    "estimatedCostLabel": "التكلفة التقديرية",
+    "finalCostLabel": "التكلفة الفعلية",
+    "notSpecified": "غير محدد",
+    "completionNotes": "ملاحظات الإغلاق",
+    "customerSignatureLabel": "توقيع العميل",
+    "cancelReasonLabel": "سبب الإلغاء",
+    "scheduledDateLabel": "موعد الصيانة",
+    "types": {
+      "WARRANTY": "ضمان",
+      "PAID": "مدفوعة",
+      "FREE_GOODWILL": "مجانية"
+    },
+    "statuses": {
+      "REQUESTED": "مطلوبة",
+      "SCHEDULED": "مجدولة",
+      "IN_PROGRESS": "جارية",
+      "COMPLETED": "مكتملة",
+      "CANCELLED": "ملغاة"
+    },
+    "warranty": {
+      "active": "الضمان ساري",
+      "expired": "الضمان منتهي",
+      "notDelivered": "لم يُسلَّم بعد"
+    },
+    "fields": {
+      "customer": "العميل",
+      "originalOrder": "رقم الطلب الأصلي",
+      "originalOrderHint": "النظام سيتحقق تلقائياً من حالة الضمان",
+      "type": "نوع الصيانة",
+      "estimatedCost": "التكلفة التقديرية (ر.س)",
+      "reportedIssue": "المشكلة المُبلَّغ عنها",
+      "reportedIssuePlaceholder": "اكتب وصفاً للمشكلة التي أبلغ عنها العميل...",
+      "description": "ملاحظات إضافية",
+      "descriptionPlaceholder": "أي تفاصيل إضافية أو ملاحظات داخلية...",
+      "scheduledDate": "موعد الصيانة",
+      "technician": "الفني المسؤول",
+      "technicianUnassigned": "— غير مسند —",
+      "noTechnicians": "لا يوجد فنيون مسجلون في النظام"
+    },
+    "actions": {
+      "start": "بدء الصيانة",
+      "complete": "إغلاق الصيانة",
+      "cancel": "إلغاء الطلب",
+      "started": "تم بدء الصيانة بنجاح",
+      "completed": "تم إغلاق الصيانة بنجاح",
+      "cancelled": "تم إلغاء الطلب",
+      "completeTitle": "إغلاق طلب الصيانة",
+      "cancelTitle": "إلغاء طلب الصيانة",
+      "finalCost": "التكلفة الفعلية (ر.س)",
+      "notes": "ملاحظات الإغلاق",
+      "notesPlaceholder": "أي ملاحظات ختامية...",
+      "customerSignature": "توقيع العميل",
+      "signatureRequired": "توقيع العميل مطلوب لإغلاق الطلب",
+      "confirmComplete": "تأكيد الإغلاق",
+      "confirmCancel": "تأكيد الإلغاء",
+      "cancelReason": "سبب الإلغاء",
+      "cancelReasonRequired": "سبب الإلغاء مطلوب",
+      "alreadyCompleted": "تم إغلاق هذا الطلب",
+      "alreadyCancelled": "تم إلغاء هذا الطلب"
+    },
+    "signature": {
+      "hint": "ارسم توقيعك داخل المربع",
+      "clear": "مسح",
+      "empty": "لم يتم التوقيع بعد"
+    },
+    "table": {
+      "requestNumber": "رقم الطلب",
+      "customer": "العميل",
+      "type": "النوع",
+      "status": "الحالة",
+      "scheduled": "موعد الصيانة",
+      "technician": "الفني",
+      "actions": "إجراءات"
+    },
+    "filters": {
+      "searchPlaceholder": "ابحث برقم الطلب أو اسم العميل...",
+      "allStatuses": "كل الحالات",
+      "allTypes": "كل الأنواع",
+      "clear": "مسح"
+    }
   }
 }
