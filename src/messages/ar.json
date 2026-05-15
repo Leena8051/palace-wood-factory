@@ -462,6 +462,12 @@
     "subtitle": "نظرة شاملة على أداء المصنع والمبيعات",
     "estimated": "تقديري",
     "lastUpdated": "آخر تحديث:",
+    "periods": {
+      "month": "هذا الشهر",
+      "3m": "3 أشهر",
+      "6m": "6 أشهر",
+      "year": "هذا العام"
+    },
     "kpi": {
       "revenue": "إجمالي الإيرادات",
       "orders": "الطلبات",
@@ -472,7 +478,11 @@
       "complaints": "شكاوى",
       "maintenance": "صيانة",
       "vsLastMonth": "مقارنة بالشهر الماضي",
-      "noComparison": "لا يوجد بيانات للمقارنة"
+      "noComparison": "لا يوجد بيانات للمقارنة",
+      "outstanding": "مستحق للتحصيل",
+      "completionRate": "نسبة التسليم",
+      "ordersInPeriod": "طلبات خلال الفترة",
+      "avgRating": "متوسط التقييم"
     },
     "charts": {
       "monthlyRevenue": "الإيرادات الشهرية (آخر 6 أشهر)",

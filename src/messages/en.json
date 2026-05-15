@@ -462,6 +462,12 @@
     "subtitle": "Comprehensive view of factory performance and sales",
     "estimated": "estimated",
     "lastUpdated": "Last updated:",
+    "periods": {
+      "month": "This month",
+      "3m": "3 months",
+      "6m": "6 months",
+      "year": "This year"
+    },
     "kpi": {
       "revenue": "Total Revenue",
       "orders": "Orders",
@@ -472,7 +478,11 @@
       "complaints": "complaints",
       "maintenance": "maintenance",
       "vsLastMonth": "vs last month",
-      "noComparison": "No data for comparison"
+      "noComparison": "No data for comparison",
+      "outstanding": "Outstanding balance",
+      "completionRate": "Delivery rate",
+      "ordersInPeriod": "Orders in period",
+      "avgRating": "Avg. rating"
     },
     "charts": {
       "monthlyRevenue": "Monthly Revenue (last 6 months)",
