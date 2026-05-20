@@ -24,21 +24,3 @@ An internal ERP system built for Palace Wood Factory, a Saudi-based woodworking 
 | Styling | Tailwind CSS v4 |
 | i18n | next-intl 4 (ar / en) |
 | Charts | Recharts |
-
-## Getting Started
-
-```bash
-npm install
-npm run db:seed
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-**Demo accounts** (password: `admin123`)
-
-| Email | Role |
-|---|---|
-| `admin@palacewood.sa` | Admin |
-| `ops@palacewood.sa` | Operations Manager |
-| `cs@palacewood.sa` | Customer Service |
